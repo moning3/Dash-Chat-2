@@ -54,7 +54,11 @@ class _MessageListState extends State<MessageList> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      /// 获取焦点
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      onPanDown: (_) {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
       child: Stack(
         children: <Widget>[
           Column(
@@ -64,13 +68,16 @@ class _MessageListState extends State<MessageList> {
                 child: ListView.builder(
                   physics: widget.messageListOptions.scrollPhysics,
                   controller: scrollController,
+                  // 倒叙排列
                   reverse: true,
                   itemCount: widget.messages.length,
                   itemBuilder: (BuildContext context, int i) {
+                    // 上一条消息
                     final ChatMessage? previousMessage =
                         i < widget.messages.length - 1
                             ? widget.messages[i + 1]
                             : null;
+                    // 最新消息
                     final ChatMessage? nextMessage =
                         i > 0 ? widget.messages[i - 1] : null;
                     final ChatMessage message = widget.messages[i];
@@ -99,6 +106,7 @@ class _MessageListState extends State<MessageList> {
                             nextMessage,
                             isAfterDateSeparator,
                             isBeforeDateSeparator,
+                            widget.messageOptions.isSameAuthorSinglePost,
                           ),
                         ] else
                           MessageRow(
@@ -108,6 +116,8 @@ class _MessageListState extends State<MessageList> {
                             currentUser: widget.currentUser,
                             isAfterDateSeparator: isAfterDateSeparator,
                             isBeforeDateSeparator: isBeforeDateSeparator,
+                            isSameAuthorSinglePost:
+                                widget.messageOptions.isSameAuthorSinglePost,
                             messageOptions: widget.messageOptions,
                           ),
                       ],
@@ -150,6 +160,8 @@ class _MessageListState extends State<MessageList> {
                     ),
                   ),
             ),
+
+          /// 到达底部
           if (!widget.scrollToBottomOptions.disabled && scrollToBottomIsVisible)
             widget.scrollToBottomOptions.scrollToBottomBuilder != null
                 ? widget.scrollToBottomOptions
@@ -164,7 +176,7 @@ class _MessageListState extends State<MessageList> {
     );
   }
 
-  /// Check if a date separator needs to be shown
+  /// Check if a date separator needs to be shown - 检查是否需要日期分隔符
   bool _shouldShowDateSeparator(ChatMessage? previousMessage,
       ChatMessage message, MessageListOptions messageListOptions) {
     if (!messageListOptions.showDateSeparator) {

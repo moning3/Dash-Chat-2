@@ -10,6 +10,8 @@ class Basic extends StatefulWidget {
 class _BasicState extends State<Basic> {
   List<ChatMessage> messages = basicSample;
 
+  var inputToolbarMore = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class _BasicState extends State<Basic> {
         title: const Text('Basic example'),
       ),
       body: DashChat(
-        currentUser: user,
+        currentUser: user4,
         onSend: (ChatMessage m) {
           setState(() {
             messages.insert(0, m);
@@ -28,6 +30,26 @@ class _BasicState extends State<Basic> {
           onLoadEarlier: () async {
             await Future.delayed(const Duration(seconds: 3));
           },
+        ),
+        messageOptions: const MessageOptions(
+          showCurrentUserAvatar: true,
+          isSameAuthorSinglePost: true,
+        ),
+        inputToolbarMoreOptions: InputToolbarMoreOptions(
+          inputToolbarMore: inputToolbarMore,
+          inputToolbarMoreChild: const Text('inputToolbarMoreChild'),
+        ),
+        inputOptions: InputOptions(
+          trailing: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  inputToolbarMore = !inputToolbarMore;
+                });
+              },
+            ),
+          ],
         ),
       ),
     );

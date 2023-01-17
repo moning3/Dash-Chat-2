@@ -31,6 +31,7 @@ class MessageOptions {
     this.timeFormat,
     this.messageTimeBuilder,
     this.messageMediaBuilder,
+    this.isSameAuthorSinglePost = false,
   });
 
   /// Format of the time if [showTime] is true
@@ -98,6 +99,7 @@ class MessageOptions {
     ChatMessage? nextMessage,
     bool isAfterDateSeparator,
     bool isBeforeDateSeparator,
+    bool isSameAuthorSinglePost,
   )? messageRowBuilder;
 
   /// Builder to create own message text widget
@@ -148,4 +150,7 @@ class MessageOptions {
   /// Function to call when the user clicks on a media
   /// Will not work with the default video player
   final void Function(ChatMedia media)? onTapMedia;
+
+  /// If the previous message is from the same author as the current one, display each message individually
+  final bool isSameAuthorSinglePost;
 }

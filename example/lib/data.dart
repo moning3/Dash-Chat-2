@@ -3,19 +3,29 @@ import 'package:dash_chat_2/dash_chat_2.dart';
 String profileImage =
     'https://firebasestorage.googleapis.com/v0/b/molteo-40978.appspot.com/o/1-intro-photo-final.jpeg?alt=media&token=daf78997-d8f0-49d1-9120-a9380bde48b5';
 
+String profileImageTest =
+    'http://pic.imeitou.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg';
+String img1 =
+    'http://pic.imeitou.com/uploads/allimg/2021042109/hujkgg4cpmx.jpg';
+String img2 =
+    'http://pic.imeitou.com/uploads/allimg/2021042109/or0tnzgazjz.jpg';
+
 // We have all the possibilities for users
-ChatUser user = ChatUser(id: '0');
+ChatUser user = ChatUser(id: '0', firstName: '是你呀', profileImage: img1);
 ChatUser user1 = ChatUser(id: '1');
 ChatUser user2 = ChatUser(id: '2', firstName: 'Niki Lauda');
 ChatUser user3 = ChatUser(id: '3', lastName: 'Clark');
-ChatUser user4 = ChatUser(id: '4', profileImage: profileImage);
+ChatUser user4 = ChatUser(id: '4', firstName: '是我呀', profileImage: img2);
 ChatUser user5 = ChatUser(id: '5', firstName: 'Charles', lastName: 'Leclerc');
 ChatUser user6 =
-    ChatUser(id: '6', firstName: 'Max', profileImage: profileImage);
+    ChatUser(id: '6', firstName: 'Max', profileImage: profileImageTest);
 ChatUser user7 =
-    ChatUser(id: '7', lastName: 'Toto', profileImage: profileImage);
+    ChatUser(id: '7', lastName: 'Toto', profileImage: profileImageTest);
 ChatUser user8 = ChatUser(
-    id: '8', firstName: 'Toto', lastName: 'Clark', profileImage: profileImage);
+    id: '8',
+    firstName: 'Toto',
+    lastName: 'Clark',
+    profileImage: profileImageTest);
 
 List<ChatMessage> allUsersSample = <ChatMessage>[
   ChatMessage(

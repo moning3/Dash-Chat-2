@@ -9,6 +9,7 @@ class MessageRow extends StatelessWidget {
     this.nextMessage,
     this.isAfterDateSeparator = false,
     this.isBeforeDateSeparator = false,
+    this.isSameAuthorSinglePost = false,
     this.messageOptions = const MessageOptions(),
     Key? key,
   }) : super(key: key);
@@ -34,6 +35,9 @@ class MessageRow extends StatelessWidget {
   /// Options to customize the behaviour and design of the messages
   final MessageOptions messageOptions;
 
+  /// If the previous message is from the same author as the current one, display each message individually
+  final bool isSameAuthorSinglePost;
+
   /// Get the avatar widget
   Widget getAvatar() {
     return messageOptions.avatarBuilder != null
@@ -54,12 +58,15 @@ class MessageRow extends StatelessWidget {
     final bool isOwnMessage = message.user.id == currentUser.id;
     bool isPreviousSameAuthor = false;
     bool isNextSameAuthor = false;
-    if (previousMessage != null &&
-        previousMessage!.user.id == message.user.id) {
-      isPreviousSameAuthor = true;
-    }
-    if (nextMessage != null && nextMessage!.user.id == message.user.id) {
-      isNextSameAuthor = true;
+
+    if (!isSameAuthorSinglePost) {
+      if (previousMessage != null &&
+          previousMessage!.user.id == message.user.id) {
+        isPreviousSameAuthor = true;
+      }
+      if (nextMessage != null && nextMessage!.user.id == message.user.id) {
+        isNextSameAuthor = true;
+      }
     }
     return Padding(
       padding: EdgeInsets.only(top: isPreviousSameAuthor ? 2 : 15),

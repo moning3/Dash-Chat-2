@@ -12,6 +12,7 @@ class DashChat extends StatelessWidget {
     this.quickReplyOptions = const QuickReplyOptions(),
     this.scrollToBottomOptions = const ScrollToBottomOptions(),
     this.readOnly = false,
+    this.inputToolbarMoreOptions = const InputToolbarMoreOptions(),
     this.typingUsers,
     Key? key,
   }) : super(key: key);
@@ -43,6 +44,9 @@ class DashChat extends StatelessWidget {
   /// Option to make the chat read only, it will hide the input field
   final bool readOnly;
 
+  // Custom chat More chat functions are under the send box
+  final InputToolbarMoreOptions inputToolbarMoreOptions;
+
   /// List of users currently typing in the chat
   final List<ChatUser>? typingUsers;
 
@@ -66,6 +70,7 @@ class DashChat extends StatelessWidget {
             inputOptions: inputOptions,
             currentUser: currentUser,
             onSend: onSend,
+            inputToolbarMoreOptions: inputToolbarMoreOptions,
           ),
       ],
     );
