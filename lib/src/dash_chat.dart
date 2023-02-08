@@ -1,4 +1,4 @@
-part of dash_chat_2;
+part of dash_chat_tool;
 
 /// {@category Entry point}
 class DashChat extends StatelessWidget {

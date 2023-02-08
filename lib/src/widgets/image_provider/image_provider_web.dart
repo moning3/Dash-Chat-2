@@ -6,7 +6,7 @@ ImageProvider getImageProvider(String url) {
   } else {
     return const AssetImage(
       'assets/placeholder.png',
-      package: 'dash_chat_2',
+      package: 'dash_chat_tool',
     );
   }
 }

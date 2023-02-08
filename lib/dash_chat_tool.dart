@@ -1,4 +1,4 @@
-library dash_chat_2;
+library dash_chat_tool;
 
 import 'dart:math';
 

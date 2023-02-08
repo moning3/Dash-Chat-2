@@ -1,4 +1,4 @@
-import 'package:dash_chat_2/dash_chat_2.dart';
+import 'package:dash_chat_tool/dash_chat_tool.dart';
 
 String profileImage =
     'https://firebasestorage.googleapis.com/v0/b/molteo-40978.appspot.com/o/1-intro-photo-final.jpeg?alt=media&token=daf78997-d8f0-49d1-9120-a9380bde48b5';

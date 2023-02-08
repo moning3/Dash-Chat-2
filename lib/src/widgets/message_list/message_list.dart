@@ -1,4 +1,4 @@
-part of dash_chat_2;
+part of dash_chat_tool;
 
 /// @nodoc
 class MessageList extends StatefulWidget {
